@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
-  FileText,
   Mail,
   Shield,
   AlertCircle,
@@ -25,7 +24,6 @@ export default function Page() {
   return (
     <div className="min-h-screen from-slate-50 via-blue-50 to-indigo-50 py-8 px-4">
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
             <Image
@@ -40,14 +38,13 @@ export default function Page() {
           </p>
         </div>
 
-        {/* Main Card */}
         <Card className="shadow-2xl border-t-4 border-indigo-600">
-          <CardHeader className="rom-indigo-600 to-blue-600 text-white rounded-t-lg">
+          <CardHeader className="rom-indigo-600 to-blue-600 rounded-t-lg">
             <div className="flex items-center gap-3">
               <Shield className="w-6 h-6" />
               <CardTitle className="text-2xl">Termos de Uso</CardTitle>
             </div>
-            <p className="text-indigo-100 text-sm mt-2">
+            <p className="text-sm mt-2 text-blue-600">
               Última atualização: 2025
             </p>
           </CardHeader>

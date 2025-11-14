@@ -11,8 +11,8 @@ export const LinksPage = ({ position }: Props) => {
       <a href="#sobre" className=" font-bold transition">
         Quem Somos
       </a>
-      <a href="#catalogo" className=" font-bold transition">
-        Catalogo
+      <a href="/portfolio" className=" font-bold transition">
+        Catálogo
       </a>
       <a href="#vantagens" className=" font-bold transition">
         Vantagens
