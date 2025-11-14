@@ -21,8 +21,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   // }).format(product.price);
 
   return (
-    <Card className="w-full hover:shadow-lg transition-shadow duration-300 ">
-      <div className="relative h-48 w-full overflow-hidden">
+    <Card className=" sm:w-full hover:shadow-lg transition-shadow duration-300 ">
+      <div className="relative h-28 sm:h-40 w-full overflow-hidden">
         <Image
           src={product.imageUrl}
           alt={product.title}
