@@ -18,7 +18,12 @@ type DialogCardItemProps = {
 
 export const DialogCardItem = ({ item, children }: DialogCardItemProps) => {
   const handlePhone = () => {
-    window.open("https://wa.me/5586998012172", "_blank");
+    const message = `Olá! Tenho interesse no produto: ${item.title}. Por favor, envie mais informações.`;
+    const url = `https://wa.me/5586998012172?text=${encodeURIComponent(
+      message
+    )}`;
+
+    window.open(url, "_blank");
   };
 
   return (

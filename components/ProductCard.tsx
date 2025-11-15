@@ -1,12 +1,5 @@
 "use client";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import { Product } from "@/data/product";
 import { DialogCardItem } from "./dialog-card-item";
@@ -16,10 +9,6 @@ type ProductCardProps = {
 };
 
 export const ProductCard = ({ product }: ProductCardProps) => {
-  const handlePhone = () => {
-    window.open("https://wa.me/5586998012172", "_blank");
-  };
-
   return (
     <Card className="w-full max-h-80 hover:shadow-lg transition-shadow duration-300 flex flex-col justify-evenly">
       <DialogCardItem item={product}>
