@@ -35,14 +35,16 @@ export const CompanySection = () => {
 
               <div className="flex gap-4 mb-8">
                 <a
-                  href="#"
+                  href="https://wa.me/5586998012172"
+                  target="_blank"
                   className="flex items-center gap-2 text-green-600 hover:text-green-700"
                 >
                   <Phone size={20} /> 86 99801-2172
                 </a>
 
                 <a
-                  href="#"
+                  href="https://wa.me/5586998519292"
+                  target="_blank"
                   className="flex items-center gap-2 text-green-600 hover:text-green-700"
                 >
                   <Phone size={20} /> 86 99851-9292
