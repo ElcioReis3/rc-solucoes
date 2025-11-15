@@ -12,10 +12,11 @@ export const HeroSection = () => {
               entende suas necessidades.
             </p>
             <a
-              href="#"
+              href="https://wa.me/5586998012172"
+              target="_blank"
               className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition shadow-lg"
             >
-              Solicitar Orçamento
+              Entre em Contato Conosco
             </a>
           </div>
         </div>

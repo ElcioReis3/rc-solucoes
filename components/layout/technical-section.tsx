@@ -41,7 +41,8 @@ export const TechnicalSection = () => {
                   </h4>
                   <div className="flex flex-wrap gap-4">
                     <a
-                      href="#"
+                      href="https://wa.me/5586998012172"
+                      target="_blank"
                       className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
                     >
                       <Phone size={20} /> WhatsApp

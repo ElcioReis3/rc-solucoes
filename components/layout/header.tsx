@@ -6,6 +6,7 @@ import { LinksPage } from "../links-pages/links-page";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <>
       <header className="bg-blue-950 text-secondary top-0 shadow-lg">
@@ -28,11 +29,29 @@ export const Header = () => {
               className="md:hidden"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              <Menu size={24} />
+              <Menu size={26} />
             </button>
           </div>
 
-          {mobileMenuOpen && <LinksPage position="flex-col" />}
+          {mobileMenuOpen && (
+            <nav className={`md:hidden flex flex-col mt-4`}>
+              <a href="#banner" className=" font-bold transition">
+                Home
+              </a>
+              <a href="#sobre" className=" font-bold transition">
+                Quem Somos
+              </a>
+              <a href="/portfolio" className=" font-bold transition">
+                Catálogo
+              </a>
+              <a href="#vantagens" className=" font-bold transition">
+                Vantagens
+              </a>
+              <a href="#contato" className=" font-bold transition">
+                Contato
+              </a>
+            </nav>
+          )}
         </div>
       </header>
     </>
