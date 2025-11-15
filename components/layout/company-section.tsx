@@ -3,18 +3,18 @@ import { Map, Phone, ShoppingBasket, ShoppingCart } from "lucide-react";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 
-type awardsType = string[];
+/* type awardsType = string[]; */
 
 export const CompanySection = () => {
   const router = useRouter();
 
-  const awards: awardsType = [
+  /*  const awards: awardsType = [
     "Detergentes, desinfetantes e multiusos",
     "Álcool 70% e 46%",
     "Sabonetes líquidos e papel toalha",
     "Panos, esponjas e acessórios de limpeza",
     "Sacos de lixo de diversos tamanhos",
-  ];
+  ]; */
 
   return (
     <>
@@ -55,24 +55,23 @@ export const CompanySection = () => {
                 O QUE OFERECEMOS
               </h3>
 
-              <p className="text-gray-600 mb-4">
-                Contamos com um catálogo para atender escritórios, comércios,
-                residências, escolas, clínicas, academias e diversos outros
-                segmentos.
-              </p>
-
               <div className="bg-gray-50 p-6 rounded-lg">
                 <h3 className="text-xl font-bold text-gray-800 mb-4">
                   Linha de Limpeza e Material de Expediente
                 </h3>
-                <div className="space-y-3">
+
+                <p className="text-gray-600 mb-4">
+                  Selecionados para atender às necessidades do seu negócio com
+                  praticidade.
+                </p>
+                {/* <div className="space-y-3">
                   {awards.map((award, index) => (
                     <div key={index} className="flex items-start gap-2">
                       <ShoppingBasket className="text-primary mt-1" size={20} />
                       <span className="text-gray-700">{award}</span>
                     </div>
                   ))}
-                </div>
+                </div> */}
               </div>
             </div>
 

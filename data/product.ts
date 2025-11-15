@@ -207,7 +207,7 @@ export const ListProducts: Product[] = [
   },
   {
     id: "p27",
-    title: "Lava Louças Harmoniex",
+    title: "Lava Louças Harmoniex  - Alta Diluição",
     description:
       "Detergente de alto rendimento e pH neutro que garante desengorduramento eficaz e maior economia. Ideal para louças, talheres e utensílios em geral.",
     imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0029.jpg",
@@ -215,7 +215,7 @@ export const ListProducts: Product[] = [
   },
   {
     id: "p28",
-    title: "Desinfetante Harmoniex Romance",
+    title: "Desinfetante Harmoniex Romance  - Alta Diluição",
     description:
       "Desinfetante de uso geral com agradável perfume Romance. Possui ação bactericida e é perfeito para desinfetar e perfumar pisos, banheiros e superfícies laváveis.",
     imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0028.jpg",
@@ -223,7 +223,7 @@ export const ListProducts: Product[] = [
   },
   {
     id: "p29",
-    title: "Desengordurante Harmoniex",
+    title: "Desengordurante Harmoniex  - Alta Diluição",
     description:
       "Fórmula 2x mais potente para limpeza pesada. Atua com eficácia máxima na remoção de gorduras e graxas em coifas, churrasqueiras, pisos, cozinhas e banheiros.",
     imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0026.jpg",
@@ -231,7 +231,7 @@ export const ListProducts: Product[] = [
   },
   {
     id: "p30",
-    title: "Limpa Pedras Harmoniex",
+    title: "Limpa Pedras Harmoniex  - Alta Diluição",
     description:
       "Detergente de alta performance desenvolvido para limpeza profunda de pedras, tijolos e cimentados. Restaura a aparência de superfícies externas com sujeira incrustada.",
     imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0031.jpg",
@@ -239,7 +239,7 @@ export const ListProducts: Product[] = [
   },
   {
     id: "p31",
-    title: "Limpa Pedras Pedrex",
+    title: "Limpa Pedras Pedrex  - Alta Diluição",
     description:
       "Limpador potente ideal para remoção de sujeira e oxidação em pisos rústicos, pedras, cimentados e tijolos. Restaura e revitaliza superfícies externas desgastadas.",
     imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0027.jpg",
@@ -247,15 +247,15 @@ export const ListProducts: Product[] = [
   },
   {
     id: "p32",
-    title: "Limpa Peróxido San Peroxxy Plus",
+    title: "Limpa Peróxido San Peroxxy Plus  - Alta Diluição",
     description:
-      "Limpador profissional formulado com Peróxido de Hidrogênio. Oferece alto poder de limpeza, com alta diluição sendo 1/200 ideal para ambientes hospitalares e comerciais que exigem higiene rigorosa.",
+      "Limpador profissional formulado com Peróxido de Hidrogênio. Oferece alto poder de limpeza, com alta diluição sendo 1/200 ideal para ambientes hospitalares e comerciais.",
     imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0025.jpg",
     category: "limpeza",
   },
   {
     id: "p33",
-    title: "Limpador Perfumado Klyo",
+    title: "Limpador Perfumado Klyo - Alta Diluição",
     description:
       "Limpador de uso geral que oferece limpeza e perfumação agradável de Brisa do Campo em uma única etapa. Ideal para manutenção diária de pisos e ambientes.",
     imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0030.jpg",
@@ -271,7 +271,7 @@ export const ListProducts: Product[] = [
   },
   {
     id: "p35",
-    title: "Aromatizador Mirax Air Bamboo",
+    title: "Aromatizador Mirax Air Bamboo  - Alta Diluição",
     description:
       "Odorizador de Ambientes concentrado com suave e duradoura fragrância Bamboo. Proporciona bem-estar e frescor em áreas de alto tráfego ou escritórios.",
     imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0034.jpg",
@@ -281,7 +281,7 @@ export const ListProducts: Product[] = [
     id: "p36",
     title: "Sabonete Espuma All Clean",
     description:
-      "Sabonete líquido em espuma de 5L. Sua fórmula suave não resseca a epiderme, sendo ideal para uso frequente em lavabos, banheiros e dispensers de alto fluxo.",
+      "Sabonete líquido em espuma de 5L. Sendo ideal para uso frequente em lavabos, banheiros e dispensers de alto fluxo.",
     imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0032.jpg",
     category: "limpeza",
   },

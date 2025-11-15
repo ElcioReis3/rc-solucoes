@@ -42,8 +42,11 @@ export const InforFooter = () => {
                 Para dúvidas ou solicitações sobre estes Termos, entre em
                 contato:
               </h3>
-              <a href="#" className="text-gray-300">
-                contato@rcsolucoes.com.br
+              <a
+                href="mailto:rcsolucoesdistribuidora@gmail.com"
+                className="text-gray-300"
+              >
+                rcsolucoesdistribuidora@gmail.com
               </a>
             </div>
           </div>
