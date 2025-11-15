@@ -2,227 +2,287 @@ export type Product = {
   id: string;
   title: string;
   description: string;
-  price?: number;
   imageUrl: string;
+  category: "limpeza" | "expediente";
 };
 
 export const ListProducts: Product[] = [
+  // --- Material de Expediente ---
   {
     id: "p1",
     title: "Dispenser de Papel Higiênico",
     description:
       "Dispenser branco, compacto e robusto para rolos de papel higiênico jumbo. Ideal para alto tráfego.",
-    price: 85.5,
     imageUrl: "/assets/images/images-produtos/Dispense_de_papel_higienico.jpg",
-  },
-  {
-    id: "p2",
-    title: "Azulim - Pedra Sanitária Lavanda (25g)",
-    description:
-      "Pedra sanitária para caixa acoplada com perfume de Lavanda. Fácil instalação e longa duração.",
-    price: 3.99,
-    imageUrl: "/assets/images/images-produtos/Azulim.jpg",
-  },
-  {
-    id: "p3",
-    title: "Limpador Geral Power Oxy (500ml)",
-    description:
-      "Limpador multiuso com Oxigênio Ativo para limpeza pesada em diversas superfícies, removendo manchas difíceis.",
-    price: 12.75,
-    imageUrl: "/assets/images/images-produtos/Limpador_Geral.jpg",
-  },
-  {
-    id: "p4",
-    title: "Flanela Multiuso (Laranja)",
-    description:
-      "Flanela macia e absorvente, ideal para polimento e limpeza de superfícies delicadas sem riscar.",
-    price: 4.9,
-    imageUrl: "/assets/images/images-produtos/Flanela.jpg",
-  },
-  {
-    id: "p5",
-    title: "Fibra Verde de Limpeza Pesada (Pacote c/ 10)",
-    description:
-      "Fibra abrasiva de alta resistência para remoção de sujeira incrustada e limpeza pesada.",
-    price: 19.9,
-    imageUrl:
-      "/assets/images/images-produtos/Fibra_verde_de_limpeza_pesada.jpg",
-  },
-  {
-    id: "p6",
-    title: "Dispenser de Sabonete Líquido",
-    description:
-      "Dispenser de parede com acionamento manual (push) para sabonete líquido ou álcool em gel. Capacidade 800ml.",
-    price: 79.9,
-    imageUrl:
-      "/assets/images/images-produtos/Dispenser_de_sabonete_liquido.jpg",
-  },
-  {
-    id: "p7",
-    title: "Balde Espremedor Doblo 30 Litros (Profissional)",
-    description:
-      "Balde espremedor com rodízios e divisória dupla, ideal para a limpeza profissional de grandes áreas.",
-    price: 320.0,
-    imageUrl:
-      "/assets/images/images-produtos/Balde_Espremedor_Doblo_30litros.jpg",
+    category: "expediente",
   },
   {
     id: "p8",
     title: "Dispenser Toalheiro Interfolha",
     description:
       "Dispenser para papel toalha interfolhado, promovendo higiene e economia no consumo de papel.",
-    price: 95.0,
     imageUrl:
       "/assets/images/images-produtos/Dispense_Toalheiro_porta_papel.jpg",
+    category: "expediente",
   },
   {
-    id: "p9",
-    title: "Bloco para Caixa Acoplada Novo Frescor (3un)",
+    id: "p6",
+    title: "Dispenser de Sabonete Líquido",
     description:
-      "Blocos sanitários para manter o vaso limpo, com água azul e fragrâncias Floral e Marine.",
-    price: 16.5,
-    imageUrl: "/assets/images/images-produtos/Bloco_para_Caixa_Acoplada.jpg",
+      "Dispenser de parede para sabonete líquido ou álcool em gel. Capacidade 800ml.",
+    imageUrl:
+      "/assets/images/images-produtos/Dispenser_de_sabonete_liquido.jpg",
+    category: "expediente",
   },
   {
     id: "p10",
     title: "Dispenser para Papel Toalha Bobina (Autocorte)",
     description:
-      "Dispenser elegante e higiênico para papel toalha em bobina. Corte automático para controle de consumo.",
-    price: 110.0,
+      "Dispenser elegante e higiênico com autocorte para controle de consumo.",
     imageUrl: "/assets/images/images-produtos/Dispense_para_detergente.jpg",
-  },
-
-  // --- Lista 2: Luvas e Mops ---
-  {
-    id: "p11",
-    title: "Luvas Confort Látex Danny (Amarela)",
-    description:
-      "Luva de segurança em látex com palma antiderrapante e forro em algodão. Maior tato e conforto.",
-    price: 18.9,
-    imageUrl: "/assets/images/images-produtos/Luvas_Confort_Latex.jpg",
-  },
-  {
-    id: "p12",
-    title: "Mop Giratório com Balde Inox",
-    description:
-      "Sistema de limpeza com balde e cesto centrifugador em inox. Acompanha dois refis de microfibra.",
-    price: 129.9,
-    imageUrl: "/assets/images/images-produtos/Mop_Giratorio.jpg",
+    category: "expediente",
   },
   {
     id: "p13",
     title: "Lixeira com Pedal de Plástico (50L)",
     description:
-      "Lixeira robusta e com pedal para acionamento. Ideal para áreas internas e externas de médio volume.",
-    price: 145.0,
+      "Lixeira robusta e prática, ideal para ambientes internos e externos.",
     imageUrl: "/assets/images/images-produtos/Lixeira_com_pedal_plastico.jpg",
-  },
-  {
-    id: "p14",
-    title: "Pano Multiuso Microfibra (Kit 8 Cores)",
-    description:
-      "Panos de microfibra de alta absorção, ideais para limpeza geral sem deixar fiapos. Perfeito para o sistema de cores.",
-    price: 25.0,
-    imageUrl: "/assets/images/images-produtos/Pano_multiuso_microfibra.jpg",
-  },
-  {
-    id: "p15",
-    title: "Papel Higiênico Jumbo 100% Celulose (6 Rolos)",
-    description:
-      "Papel higiênico institucional de alta qualidade, 100% celulose, em rolos jumbo para máxima economia.",
-    price: 89.9,
-    imageUrl:
-      "/assets/images/images-produtos/Papel_Higienico_100_ celulose.jpg",
-  },
-  {
-    id: "p16",
-    title: "Luva Ranhurada Volk (Limpeza Pesada)",
-    description:
-      "Luva de látex natural com ranhuras para melhor aderência em superfícies molhadas. Resistência e proteção.",
-    price: 14.5,
-    imageUrl: "/assets/images/images-produtos/Luva_Ranhurada.jpg",
-  },
-  {
-    id: "p17",
-    title: "Pano de Chão Microfibra (Azul)",
-    description:
-      "Pano de microfibra para chão. Ideal para absorver líquidos e coletar pó sem riscar pisos.",
-    price: 11.9,
-    imageUrl: "/assets/images/images-produtos/Pano_de_Chao_Microfibra.jpg",
-  },
-  {
-    id: "p18",
-    title: "Mop Pó Retangular (40cm)",
-    description:
-      "Mop para coleta de pó e sujidade seca. Cabo telescópico e refil em acrílico para limpeza eficiente.",
-    price: 75.0,
-    imageUrl: "/assets/images/images-produtos/Mop_Po.jpg",
-  },
-  {
-    id: "p19",
-    title: "Pá de Lixo Coletora com Cabo",
-    description:
-      "Pá coletora de lixo ergonômica com cabo longo, ideal para evitar o contato com o chão.",
-    price: 49.9,
-    imageUrl: "/assets/images/images-produtos/Pa_de_lixo_coletora.jpg",
-  },
-  {
-    id: "p20",
-    title: "Odorizante Ambiental Puro Ar (Capim Limão)",
-    description:
-      "Odorizante em aerossol de longa duração. Perfume de Capim Limão, ideal para banheiros e ambientes internos.",
-    price: 15.2,
-    imageUrl: "/assets/images/images-produtos/Odorizante_Ambiental.jpg",
-  },
-
-  // --- Lista 3: Sinalização e Papéis ---
-  {
-    id: "p21",
-    title: "Papel Toalha em Bobina 100% Celulose (6 Rolos)",
-    description:
-      "Bobinas de papel toalha industrial de alta qualidade e absorção. Ideal para dispensers de grande volume.",
-    price: 69.9,
-    imageUrl: "/assets/images/images-produtos/Papel_toalha_100_celulose.jpg",
-  },
-  {
-    id: "p22",
-    title: "Papel Toalha Interfolhado 100% Celulose (3 Pacotes)",
-    description:
-      "Papel toalha folha dupla, macio e ultra absorvente. Perfeito para uso em dispensers interfolha.",
-    price: 45.0,
-    imageUrl:
-      "/assets/images/images-produtos/Papel_interfolhado_100_celulose.jpg",
-  },
-  {
-    id: "p23",
-    title: "Rodo Pega Fibra com Cabo (Limpeza de Superfícies)",
-    description:
-      "Rodo com base plana e cabo, desenhado para fixar fibras de limpeza pesada, ideal para paredes e pisos.",
-    price: 55.9,
-    imageUrl: "/assets/images/images-produtos/Rodo_Pega_Fibra.jpg",
+    category: "expediente",
   },
   {
     id: "p24",
     title: "Placa de Sinalização 'Cuidado Piso Molhado'",
     description:
-      "Placa A-frame amarela, dobrável e de alta visibilidade. Item de segurança essencial para áreas em limpeza.",
-    price: 39.9,
+      "Placa dobrável e resistente para sinalização de áreas em limpeza.",
     imageUrl: "/assets/images/images-produtos/Placa_Piso_Molhado.jpg",
+    category: "expediente",
+  },
+
+  // --- Produtos de Limpeza ---
+  {
+    id: "p2",
+    title: "Azulim - Pedra Sanitária Lavanda (25g)",
+    description: "Pedra sanitária para caixa acoplada com perfume de Lavanda.",
+    imageUrl: "/assets/images/images-produtos/Azulim.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p3",
+    title: "Limpador Geral Power Oxy (500ml)",
+    description: "Limpador multiuso com Oxigênio Ativo para limpeza pesada.",
+    imageUrl: "/assets/images/images-produtos/Limpador_Geral.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p4",
+    title: "Flanela Multiuso (Laranja)",
+    description: "Flanela macia e absorvente ideal para limpeza delicada.",
+    imageUrl: "/assets/images/images-produtos/Flanela.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p5",
+    title: "Fibra Verde de Limpeza Pesada (Pacote c/ 10)",
+    description:
+      "Fibra abrasiva resistente para remoção de sujeira incrustada.",
+    imageUrl:
+      "/assets/images/images-produtos/Fibra_verde_de_limpeza_pesada.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p7",
+    title: "Balde Espremedor Doblo 30 Litros (Profissional)",
+    description: "Balde com espremedor profissional para grandes áreas.",
+    imageUrl:
+      "/assets/images/images-produtos/Balde_Espremedor_Doblo_30litros.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p9",
+    title: "Bloco para Caixa Acoplada Novo Frescor (3un)",
+    description: "Mantém o vaso limpo com fragrância prolongada.",
+    imageUrl: "/assets/images/images-produtos/Bloco_para_Caixa_Acoplada.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p11",
+    title: "Luvas Confort Látex Danny (Amarela)",
+    description: "Luva com palma antiderrapante e ótima durabilidade.",
+    imageUrl: "/assets/images/images-produtos/Luvas_Confort_Latex.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p12",
+    title: "Mop Giratório com Balde Inox",
+    description: "Sistema giratório ideal para limpeza prática e rápida.",
+    imageUrl: "/assets/images/images-produtos/Mop_Giratorio.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p14",
+    title: "Pano Multiuso Microfibra (Kit 8 Cores)",
+    description: "Alta absorção e ideal para detalhamento.",
+    imageUrl: "/assets/images/images-produtos/Pano_multiuso_microfibra.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p15",
+    title: "Papel Higiênico Jumbo 100% Celulose (6 Rolos)",
+    description: "Alta maciez e durabilidade.",
+    imageUrl:
+      "/assets/images/images-produtos/Papel_Higienico_100_ celulose.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p16",
+    title: "Luva Ranhurada Volk (Limpeza Pesada)",
+    description: "Luva de látex robusta ideal para limpeza pesada.",
+    imageUrl: "/assets/images/images-produtos/Luva_Ranhurada.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p17",
+    title: "Pano de Chão Microfibra (Azul)",
+    description: "Super absorvente e ideal para pisos.",
+    imageUrl: "/assets/images/images-produtos/Pano_de_Chao_Microfibra.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p18",
+    title: "Mop Pó Retangular (40cm)",
+    description: "Ideal para coleta de pó e limpeza seca.",
+    imageUrl: "/assets/images/images-produtos/Mop_Po.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p19",
+    title: "Pá de Lixo Coletora com Cabo",
+    description: "Ergonômica e prática para coleta de resíduos.",
+    imageUrl: "/assets/images/images-produtos/Pa_de_lixo_coletora.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p20",
+    title: "Odorizante Ambiental Puro Ar (Capim Limão)",
+    description: "Perfume de longa duração para ambientes.",
+    imageUrl: "/assets/images/images-produtos/Odorizante_Ambiental.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p21",
+    title: "Papel Toalha em Bobina 100% Celulose (6 Rolos)",
+    description: "Alta absorção e rendimento.",
+    imageUrl: "/assets/images/images-produtos/Papel_toalha_100_celulose.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p22",
+    title: "Papel Toalha Interfolhado 100% Celulose (3 Pacotes)",
+    description: "Folha dupla macia e absorvente.",
+    imageUrl:
+      "/assets/images/images-produtos/Papel_interfolhado_100_celulose.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p23",
+    title: "Rodo Pega Fibra com Cabo",
+    description: "Ideal para fibras de limpeza pesada.",
+    imageUrl: "/assets/images/images-produtos/Rodo_Pega_Fibra.jpg",
+    category: "limpeza",
   },
   {
     id: "p25",
     title: "Saco de Lixo Reforçado (100 Unidades - Vários L.)",
-    description:
-      "Sacos de lixo resistentes em diversos tamanhos (15L, 30L, 50L, 100L). Embalagem com 100 unidades.",
-    price: 35.0,
+    description: "Resistência para uso profissional.",
     imageUrl: "/assets/images/images-produtos/Saco_de_lixo.jpg",
+    category: "limpeza",
   },
   {
     id: "p26",
     title: "Pano de Limpeza Microfibra (Kit Colorido)",
-    description:
-      "Kit de panos de microfibra super macios e absorventes, indicados para a limpeza detalhada e polimento.",
-    price: 28.5,
+    description: "Panos ultra macios e com alta absorção.",
     imageUrl: "/assets/images/images-produtos/Pano_Micro_Fibra.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p27",
+    title: "Lava Louças Harmoniex",
+    description:
+      "Detergente de alto rendimento e pH neutro que garante desengorduramento eficaz e maior economia. Ideal para louças, talheres e utensílios em geral.",
+    imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0029.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p28",
+    title: "Desinfetante Harmoniex Romance",
+    description:
+      "Desinfetante de uso geral com agradável perfume Romance. Possui ação bactericida e é perfeito para desinfetar e perfumar pisos, banheiros e superfícies laváveis.",
+    imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0028.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p29",
+    title: "Desengordurante Harmoniex",
+    description:
+      "Fórmula 2x mais potente para limpeza pesada. Atua com eficácia máxima na remoção de gorduras e graxas em coifas, churrasqueiras, pisos, cozinhas e banheiros.",
+    imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0026.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p30",
+    title: "Limpa Pedras Harmoniex",
+    description:
+      "Detergente de alta performance desenvolvido para limpeza profunda de pedras, tijolos e cimentados. Restaura a aparência de superfícies externas com sujeira incrustada.",
+    imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0031.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p31",
+    title: "Limpa Pedras Pedrex",
+    description:
+      "Limpador potente ideal para remoção de sujeira e oxidação em pisos rústicos, pedras, cimentados e tijolos. Restaura e revitaliza superfícies externas desgastadas.",
+    imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0027.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p32",
+    title: "Limpa Peróxido San Peroxxy Plus",
+    description:
+      "Limpador profissional formulado com Peróxido de Hidrogênio. Oferece alto poder de limpeza, alta diluição sendo 1:200, e é ideal para ambientes hospitalares e comerciais que exigem higiene rigorosa.",
+    imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0025.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p33",
+    title: "Limpador Perfumado Klyo",
+    description:
+      "Limpador de uso geral que oferece limpeza e perfumação agradável de Brisa do Campo em uma única etapa. Ideal para manutenção diária de pisos e ambientes.",
+    imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0030.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p34",
+    title: "Desinfetante Lysoform Original",
+    description:
+      "O desinfetante número 1 recomendado por médicos. Mata 99,9% dos vírus e bactérias, incluindo o SARS-CoV-2 (COVID-19), garantindo máxima higiene e proteção.",
+    imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0033.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p35",
+    title: "Aromatizador Mirax Air Bamboo",
+    description:
+      "Odorizador de Ambientes concentrado com suave e duradoura fragrância Bamboo. Proporciona bem-estar e frescor em áreas de alto tráfego ou escritórios.",
+    imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0034.jpg",
+    category: "limpeza",
+  },
+  {
+    id: "p36",
+    title: "Sabonete Espuma All Clean",
+    description:
+      "Sabonete líquido em espuma de 5L. Sua fórmula suave não resseca a epiderme, sendo ideal para uso frequente em lavabos, banheiros e dispensers de alto fluxo.",
+    imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0032.jpg",
+    category: "limpeza",
   },
 ];

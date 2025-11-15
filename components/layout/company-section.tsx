@@ -7,18 +7,18 @@ type awardsType = string[];
 
 export const CompanySection = () => {
   const router = useRouter();
+
   const awards: awardsType = [
     "Detergentes, desinfetantes e multiusos",
     "Álcool 70% e 46%",
     "Sabonetes líquidos e papel toalha",
     "Panos, esponjas e acessórios de limpeza",
     "Sacos de lixo de diversos tamanhos",
-    "Material de expediente: papéis, canetas, pastas e organizadores",
   ];
 
   return (
     <>
-      <section id="sobre" className="py-16 bg-gray-100">
+      <section id="about" className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div>
@@ -56,8 +56,9 @@ export const CompanySection = () => {
               </h3>
 
               <p className="text-gray-600 mb-4">
-                Contamos com um catálogo completo para atender escritórios,
-                comércios, residências, escolas, clínicas e muito mais.
+                Contamos com um catálogo para atender escritórios, comércios,
+                residências, escolas, clínicas, academias e diversos outros
+                segmentos.
               </p>
 
               <div className="bg-gray-50 p-6 rounded-lg">

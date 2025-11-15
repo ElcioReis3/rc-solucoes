@@ -1,4 +1,3 @@
-import { Banner } from "@/components/layout/banner";
 import { CompanySection } from "@/components/layout/company-section";
 import { CourseSection } from "@/components/layout/course-section";
 import { Footer } from "@/components/layout/footer";
@@ -12,10 +11,9 @@ export default function Home() {
   return (
     <>
       <Header />
-      {/* <Banner /> */}
       <HeroSection />
       <CourseSection />
-      <ReviewsSection />
+      {/*  <ReviewsSection /> */}
       <CompanySection />
       <TechnicalSection />
       <InforFooter />

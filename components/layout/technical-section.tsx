@@ -5,7 +5,7 @@ import Image from "next/image";
 export const TechnicalSection = () => {
   return (
     <>
-      <section id="contato" className="py-14 ">
+      <section id="contact" className="py-14 ">
         <div className="container mx-auto px-4">
           <header className="text-center mb-8">
             <Image
@@ -15,11 +15,9 @@ export const TechnicalSection = () => {
               alt="rc soluções"
               className="m-auto"
             />
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              Conheça a RC Soluções
-            </h2>
-            <p className="text-gray-600 text-lg">
-              Conheça nosso catálogo completo de produtos e serviços
+
+            <p className="text-gray-600 text-lg font-semibold">
+              Conheça alguns dos nossos produtos em nosso catálogo.
             </p>
           </header>
 

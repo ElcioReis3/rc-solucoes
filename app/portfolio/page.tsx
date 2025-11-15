@@ -8,6 +8,11 @@ import { useRouter } from "next/navigation";
 export default function Page() {
   const router = useRouter();
 
+  const cleaningProducts = ListProducts.filter((p) => p.category === "limpeza");
+  const officeProducts = ListProducts.filter(
+    (p) => p.category === "expediente"
+  );
+
   return (
     <>
       <div className="w-full mx-auto px-4 py-8 bg-blue-50">
@@ -23,8 +28,20 @@ export default function Page() {
           Catálogo de Produtos
         </h1>
 
+        <h2 className="text-lg md:text-xl font-semibold mb-3">
+          Produtos de Limpeza
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 justify-items-center mb-8">
+          {cleaningProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+
+        <h2 className="text-lg md:text-xl font-semibold mb-3">
+          Material de Expediente
+        </h2>
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 justify-items-center">
-          {ListProducts.map((product) => (
+          {officeProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
