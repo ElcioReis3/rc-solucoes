@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://rc-solucoes-produtos-limpeza.netlify.app/assets/images/ogo-tipo-light.png",
+        url: "https://rc-solucoes-produtos-limpeza.netlify.app/assets/images/logo-tipo-light.png",
         width: 800,
         height: 800,
         alt: "Logo RC Soluções",
