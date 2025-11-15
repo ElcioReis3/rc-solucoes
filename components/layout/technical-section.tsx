@@ -1,3 +1,4 @@
+"use client";
 import { Folder, Phone } from "lucide-react";
 import Image from "next/image";
 
@@ -46,7 +47,7 @@ export const TechnicalSection = () => {
                       <Phone size={20} /> WhatsApp
                     </a>
                     <a
-                      href="#"
+                      href="/portfolio"
                       className="flex items-center gap-2 bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition"
                     >
                       <Folder size={20} /> Nosso Catálogo

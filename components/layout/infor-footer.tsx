@@ -38,12 +38,13 @@ export const InforFooter = () => {
             </div>
 
             <div>
-              <h3 className="text-xl font-bold mb-4">Sobre o Projeto</h3>
-              <p className="text-gray-300">
-                Aprenda a trabalhar com HTML5 e CSS3 para desenvolver seus
-                projetos e entregar páginas que estejam dentro dos padrões da
-                WEB seguindo as boas práticas!
-              </p>
+              <h3 className="text-xl font-bold mb-4">
+                Para dúvidas ou solicitações sobre estes Termos, entre em
+                contato:
+              </h3>
+              <a href="#" className="text-gray-300">
+                contato@rcsolucoes.com.br
+              </a>
             </div>
           </div>
         </div>

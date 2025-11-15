@@ -9,38 +9,54 @@ import {
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Product } from "@/data/product";
+import { HoverCardItem } from "./hover-card";
 
 type ProductCardProps = {
   product: Product;
 };
 
 export const ProductCard = ({ product }: ProductCardProps) => {
-  // const formattedPrice = new Intl.NumberFormat("pt-BR", {
-  //   style: "currency",
-  //   currency: "BRL",
-  // }).format(product.price);
+  const handlePhone = () => {
+    window.open("https://wa.me/5586998012172", "_blank");
+  };
 
   return (
-    <Card className=" sm:w-full hover:shadow-lg transition-shadow duration-300 ">
-      <div className="relative h-28 sm:h-40 w-full overflow-hidden">
-        <Image
-          src={product.imageUrl}
-          alt={product.title}
-          fill
-          className="object-contain"
-        />
-      </div>
-
-      <CardHeader className="">
-        <CardTitle className="text-lg line-clamp-1">{product.title}</CardTitle>
+    <Card className="w-full max-h-80 hover:shadow-lg transition-shadow duration-300 flex flex-col justify-evenly">
+      <CardHeader className="py-0 my-0">
+        <div className="overflow-hidden relative w-20 h-20 mx-auto">
+          <HoverCardItem
+            item={
+              <Image
+                src={product.imageUrl}
+                alt={product.title}
+                fill
+                className="object-cover rounded-md p-2"
+              />
+            }
+          >
+            {
+              <Image
+                src={product.imageUrl}
+                alt={product.title}
+                fill
+                className="object-cover "
+              />
+            }
+          </HoverCardItem>
+        </div>
+        <CardTitle className="text-lg line-clamp-2">{product.title}</CardTitle>
       </CardHeader>
 
       <CardContent className="py-0">
-        <p className="text-sm text-gray-600 ">{product.description}</p>
+        <p className="text-sm text-gray-600 line-clamp-2">
+          {product.description}
+        </p>
       </CardContent>
 
       <CardFooter className="flex justify-center py-0">
-        <Button className="w-full">Tenho Interesse</Button>
+        <Button className="w-full cursor-pointer" onClick={handlePhone}>
+          Tenho Interesse
+        </Button>
       </CardFooter>
     </Card>
   );

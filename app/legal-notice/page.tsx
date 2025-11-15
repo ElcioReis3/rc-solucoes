@@ -1,7 +1,20 @@
+"use client";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
 export default function Page() {
+  const router = useRouter();
   return (
     <>
       <div className="container mx-auto px-4 py-16">
+        <Image
+          src={"/assets/images/logo-tipo-light.png"}
+          width={130}
+          height={100}
+          alt="Logo"
+          className="mx-auto mb-4 cursor-pointer"
+          onClick={() => router.push("/")}
+        />
         <h1 className="text-4xl font-bold mb-8">Aviso Legal</h1>
         <div className="prose max-w-none">
           <h2>Última atualização: 2025</h2>

@@ -1,9 +1,12 @@
+"use client";
 import { Map, Phone, ShoppingBasket, ShoppingCart } from "lucide-react";
 import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
 
 type awardsType = string[];
 
 export const CompanySection = () => {
+  const router = useRouter();
   const awards: awardsType = [
     "Detergentes, desinfetantes e multiusos",
     "Álcool 70% e 46%",
@@ -92,7 +95,10 @@ export const CompanySection = () => {
                   loading="lazy"
                 ></iframe>
               </div>
-              <Button className="w-full p-4 text-xl font-bold cursor-pointer">
+              <Button
+                className="w-full p-4 text-xl font-bold cursor-pointer"
+                onClick={() => router.push("/portfolio")}
+              >
                 <ShoppingCart /> Ver Catálogo
               </Button>
             </div>
