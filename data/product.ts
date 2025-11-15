@@ -249,7 +249,7 @@ export const ListProducts: Product[] = [
     id: "p32",
     title: "Limpa Peróxido San Peroxxy Plus",
     description:
-      "Limpador profissional formulado com Peróxido de Hidrogênio. Oferece alto poder de limpeza, alta diluição sendo 1:200, e é ideal para ambientes hospitalares e comerciais que exigem higiene rigorosa.",
+      "Limpador profissional formulado com Peróxido de Hidrogênio. Oferece alto poder de limpeza, com alta diluição sendo 1/200 ideal para ambientes hospitalares e comerciais que exigem higiene rigorosa.",
     imageUrl: "/assets/images/images-produtos/IMG-20251115-WA0025.jpg",
     category: "limpeza",
   },
