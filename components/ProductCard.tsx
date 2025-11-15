@@ -46,12 +46,6 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           {product.description}
         </p>
       </CardContent>
-
-      <CardFooter className="flex justify-center py-0">
-        <Button className="w-full cursor-pointer" onClick={handlePhone}>
-          Tenho Interesse
-        </Button>
-      </CardFooter>
     </Card>
   );
 };
