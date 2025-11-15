@@ -32,25 +32,7 @@ export const Header = () => {
             </button>
           </div>
 
-          {mobileMenuOpen && (
-            <nav className="md:hidden mt-4 pb-4 flex flex-col space-y-2">
-              <a href="#banner" className="hover:text-blue-200 transition">
-                Home
-              </a>
-              <a href="#noticias" className="hover:text-blue-200 transition">
-                Notícias
-              </a>
-              <a href="#curso" className="hover:text-blue-200 transition">
-                Senac
-              </a>
-              <a href="#contato" className="hover:text-blue-200 transition">
-                Contato
-              </a>
-              <a href="#cursos" className="hover:text-blue-200 transition">
-                Cursos
-              </a>
-            </nav>
-          )}
+          {mobileMenuOpen && <LinksPage position="flex-col" />}
         </div>
       </header>
     </>

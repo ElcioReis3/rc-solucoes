@@ -1,7 +1,9 @@
+import { BadgeDollarSign, HeadsetIcon, ShieldCheck, Truck } from "lucide-react";
 import Image from "next/image";
 
 type listCourseType = {
   title: string;
+  icon: React.ElementType;
   description: string;
 };
 
@@ -9,20 +11,24 @@ export const CourseSection = () => {
   const listCourse: listCourseType[] = [
     {
       title: "Entrega Rápida",
+      icon: Truck,
       description:
         "Todas as aulas são realizadas no laboratório de informática para que você tenha a maior experiencia parecida com o mercado de trabalho.",
     },
     {
       title: "Qualidade Garantida",
+      icon: ShieldCheck,
       description:
         "Conteúdo organizado e progressivo para facilitar sua compreensão e prática no dia a dia.",
     },
     {
       title: "Preço Competitivo",
+      icon: BadgeDollarSign,
       description: "Condições especiais para empresas e compras recorrentes.",
     },
     {
       title: "Atendimento Personalizado",
+      icon: HeadsetIcon,
       description:
         "Suporte direto para tirar dúvidas ou montar sua lista de produtos.",
     },
@@ -57,10 +63,13 @@ export const CourseSection = () => {
                 key={index}
                 className="bg-gray-50 p-6 rounded-lg hover:shadow-lg transition"
               >
+                {item.icon && (
+                  <item.icon className="text-blue-600 mb-4 m-auto" size={38} />
+                )}
                 <h3 className="text-xl font-bold text-gray-800 mb-3">
                   {item.title}
                 </h3>
-                <p className="text-gray-600">{item.description}</p>
+                <p className="text-gray-600 ">{item.description}</p>
               </div>
             ))}
           </div>
