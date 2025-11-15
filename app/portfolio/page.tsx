@@ -8,11 +8,6 @@ import { useRouter } from "next/navigation";
 export default function Page() {
   const router = useRouter();
 
-  const cleaningProducts = ListProducts.filter((p) => p.category === "limpeza");
-  const officeProducts = ListProducts.filter(
-    (p) => p.category === "expediente"
-  );
-
   return (
     <>
       <div className="w-full mx-auto px-4 py-8 bg-blue-50">
@@ -28,19 +23,75 @@ export default function Page() {
           Catálogo de Produtos
         </h1>
 
-        <h2 className="text-lg md:text-xl font-semibold mb-3">Limpeza</h2>
+        <h2 className="text-lg md:text-xl font-semibold mb-3">Dispensers</h2>
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 justify-items-center mb-8">
-          {cleaningProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          {ListProducts.filter((p) => p.subCategory === "dispensers").map(
+            (product) => (
+              <>
+                <ProductCard key={product.id} product={product} />
+              </>
+            )
+          )}
+        </div>
+        <h2 className="text-lg md:text-xl font-semibold mb-3">Higienicos</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 justify-items-center mb-8">
+          {ListProducts.filter((p) => p.subCategory === "higienicos").map(
+            (product) => (
+              <>
+                <ProductCard key={product.id} product={product} />
+              </>
+            )
+          )}
+        </div>
+        <h2 className="text-lg md:text-xl font-semibold mb-3">Luvas</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 justify-items-center mb-8">
+          {ListProducts.filter((p) => p.subCategory === "luvas").map(
+            (product) => (
+              <>
+                <ProductCard key={product.id} product={product} />
+              </>
+            )
+          )}
+        </div>
+        <h2 className="text-lg md:text-xl font-semibold mb-3">
+          Papeis e Toalhas
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 justify-items-center mb-8">
+          {ListProducts.filter((p) => p.subCategory === "papel").map(
+            (product) => (
+              <>
+                <ProductCard key={product.id} product={product} />
+              </>
+            )
+          )}
+        </div>
+        <h2 className="text-lg md:text-xl font-semibold mb-3">Químicos</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 justify-items-center mb-8">
+          {ListProducts.filter((p) => p.subCategory === "quimicos").map(
+            (product) => (
+              <>
+                <ProductCard key={product.id} product={product} />
+              </>
+            )
+          )}
+        </div>
+        <h2 className="text-lg md:text-xl font-semibold mb-3">Utensilios</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 justify-items-center mb-8">
+          {ListProducts.filter((p) => p.subCategory === "utensilios").map(
+            (product) => (
+              <>
+                <ProductCard key={product.id} product={product} />
+              </>
+            )
+          )}
         </div>
 
-        <h2 className="text-lg md:text-xl font-semibold mb-3">Expediente</h2>
+        {/*  <h2 className="text-lg md:text-xl font-semibold mb-3">Expediente</h2>
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 justify-items-center">
           {officeProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
-        </div>
+        </div> */}
       </div>
       <Footer />
     </>
