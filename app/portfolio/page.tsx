@@ -54,7 +54,7 @@ export default function Page() {
           )}
         </div>
         <h2 className="text-lg md:text-xl font-semibold mb-3">
-          Papeis e Toalhas
+          Papel Higiênico | Papel Toalha
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 justify-items-center mb-8">
           {ListProducts.filter((p) => p.subCategory === "papel").map(
@@ -86,12 +86,11 @@ export default function Page() {
           )}
         </div>
 
-        {/*  <h2 className="text-lg md:text-xl font-semibold mb-3">Expediente</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 justify-items-center">
-          {officeProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div> */}
+        <h2 className="text-lg md:text-xl font-semibold mb-3">
+          Material de Expediente
+        </h2>
+
+        <p>Entre em contato para apresentação do catálogo.</p>
       </div>
       <Footer />
     </>

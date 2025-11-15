@@ -4,7 +4,7 @@ type Props = {
 
 export const LinksPage = ({ position }: Props) => {
   return (
-    <nav className={`hidden md:flex space-x-8 ${position}`}>
+    <nav className={`hidden md:flex space-x-8 ${position} `}>
       <a href="#initial" className=" font-bold transition">
         Home
       </a>

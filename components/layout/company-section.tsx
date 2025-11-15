@@ -2,6 +2,15 @@
 import { Map, Phone, ShoppingCart } from "lucide-react";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
+import {
+  Building2,
+  Store,
+  Home,
+  School,
+  Stethoscope,
+  Dumbbell,
+} from "lucide-react";
+import { WhatsappIcon } from "../WhatsappIcon";
 
 export const CompanySection = () => {
   const router = useRouter();
@@ -18,9 +27,9 @@ export const CompanySection = () => {
               <p className="text-gray-600 text-lg mb-8">
                 A RC Soluções é uma empresa especializada na venda e
                 distribuição de produtos de limpeza e material de expediente
-                para empresas de todos os portes. Trabalhamos com variedade,
-                agilidade e preços competitivos, garantindo praticidade no seu
-                dia a dia e fornecimento contínuo para o seu negócio.
+                para empresas de todos os portes. Atuamos com variedade,
+                agilidade e excelência operacional, garantindo praticidade no
+                seu dia a dia e fornecimento contínuo para o seu negócio.
               </p>
 
               <div className="flex gap-4 mb-8">
@@ -29,7 +38,12 @@ export const CompanySection = () => {
                   target="_blank"
                   className="flex items-center gap-2 text-green-600 hover:text-green-700"
                 >
-                  <Phone size={20} /> 86 99801-2172
+                  <WhatsappIcon
+                    width={24}
+                    height={24}
+                    className="text-green-600 hover:text-green-700"
+                  />{" "}
+                  86 99801-2172
                 </a>
 
                 <a
@@ -37,7 +51,12 @@ export const CompanySection = () => {
                   target="_blank"
                   className="flex items-center gap-2 text-green-600 hover:text-green-700"
                 >
-                  <Phone size={20} /> 86 99851-9292
+                  <WhatsappIcon
+                    width={24}
+                    height={24}
+                    className="text-green-600 hover:text-green-700"
+                  />{" "}
+                  86 99851-9292
                 </a>
               </div>
 
@@ -46,13 +65,13 @@ export const CompanySection = () => {
               </h3>
 
               <div className="bg-gray-50 p-6 rounded-lg">
-                <h3 className="text-xl font-bold text-gray-800 mb-4">
-                  Linha de Limpeza e Material de Expediente
+                <h3 className="text-xl font-semibold text-gray-500 mb-4">
+                  Contamos com um catálogo para atender escritórios, comércios,
+                  residências, escolas, clínicas, academias e diversos outros
+                  segmentos.
                 </h3>
-
-                <p className="text-gray-600 mb-4">
-                  Selecionados para atender às necessidades do seu negócio com
-                  praticidade.
+                <p className="flex gap-7 text-primary ">
+                  <Store /> <Home /> <School /> <Stethoscope /> <Dumbbell />
                 </p>
               </div>
             </div>
@@ -80,7 +99,7 @@ export const CompanySection = () => {
                 ></iframe>
               </div>
               <Button
-                className="w-full p-4 text-xl font-bold cursor-pointer"
+                className="w-full p-4 text-xl font-bold cursor-pointer animate-pulse"
                 onClick={() => router.push("/portfolio")}
               >
                 <ShoppingCart /> Ver Catálogo

@@ -1,6 +1,7 @@
 "use client";
-import { Folder, Phone } from "lucide-react";
+import { Folder, MessageCircle, Phone } from "lucide-react";
 import Image from "next/image";
+import { WhatsappIcon } from "../WhatsappIcon";
 
 export const TechnicalSection = () => {
   return (
@@ -43,7 +44,12 @@ export const TechnicalSection = () => {
                       target="_blank"
                       className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
                     >
-                      <Phone size={20} /> WhatsApp
+                      <WhatsappIcon
+                        width={24}
+                        height={24}
+                        className="text-white"
+                      />
+                      WhatsApp
                     </a>
                     <a
                       href="/portfolio"
