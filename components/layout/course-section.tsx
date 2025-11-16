@@ -31,7 +31,7 @@ export const CourseSection = () => {
       title: "Atendimento Personalizado",
       icon: HeadsetIcon,
       description:
-        "Suporte direto e consultivo para orientar suas necessidades e ajudar na escolha dos produtos ideais.",
+        "Suporte direto e consultivo para entender suas necessidades e ajudar na escolha dos produtos ideais.",
     },
   ];
 

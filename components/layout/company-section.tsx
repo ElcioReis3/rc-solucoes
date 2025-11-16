@@ -2,14 +2,7 @@
 import { Map, Phone, ShoppingCart } from "lucide-react";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
-import {
-  Building2,
-  Store,
-  Home,
-  School,
-  Stethoscope,
-  Dumbbell,
-} from "lucide-react";
+import { Store, Home, School, Stethoscope, Dumbbell } from "lucide-react";
 import { WhatsappIcon } from "../WhatsappIcon";
 
 export const CompanySection = () => {
@@ -27,9 +20,10 @@ export const CompanySection = () => {
               <p className="text-gray-600 text-lg mb-8">
                 A RC Soluções é uma empresa especializada na venda e
                 distribuição de produtos de limpeza e material de expediente
-                para empresas de todos os portes. Atuamos com variedade,
-                agilidade e excelência operacional, garantindo praticidade no
-                seu dia a dia e fornecimento contínuo para o seu negócio.
+                para empresas de todos os portes. Trabalhamos com variedade,
+                agilidade e uma ótima relação custo-benefício, garantindo
+                praticidade no seu dia a dia e fornecimento contínuo para o seu
+                negócio.
               </p>
 
               <div className="flex gap-4 mb-8">
