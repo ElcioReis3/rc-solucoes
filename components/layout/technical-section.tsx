@@ -2,6 +2,7 @@
 import { Folder, MessageCircle, Phone } from "lucide-react";
 import Image from "next/image";
 import { WhatsappIcon } from "../WhatsappIcon";
+import { InstagramIcon } from "../InstagramIcon";
 
 export const TechnicalSection = () => {
   return (
@@ -50,6 +51,14 @@ export const TechnicalSection = () => {
                         className="text-white"
                       />
                       WhatsApp
+                    </a>
+                    <a
+                      href="https://www.instagram.com/rcsolucoesdistribuidora?igsh=MWFodGdqaHcyZjZ5NA%3D%3D&utm_source=qr"
+                      target="_blank"
+                      className="flex items-center gap-2 bg-purple-700 text-white px-4 py-2 rounded-lg hover:bg-purple-800 transition"
+                    >
+                      <InstagramIcon width={24} height={24} />
+                      Instagram
                     </a>
                     <a
                       href="/portfolio"
