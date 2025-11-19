@@ -3,12 +3,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import { Product } from "@/data/product";
 import { DialogCardItem } from "./dialog-card-item";
+import { useCart } from "@/contexts/CartContext";
+import { Button } from "./ui/button";
 
 type ProductCardProps = {
   product: Product;
 };
 
 export const ProductCard = ({ product }: ProductCardProps) => {
+  const { add } = useCart();
+
   return (
     <Card className="w-full max-h-80 hover:shadow-lg transition-shadow duration-300 flex flex-col justify-evenly">
       <DialogCardItem item={product}>
@@ -34,6 +38,13 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <p className="text-sm text-gray-600 line-clamp-2">
           {product.description}
         </p>
+
+        <Button
+          className="w-full bg-blue-600 text-white py-1 mt-2 rounded hover:bg-blue-700"
+          onClick={() => add(product)}
+        >
+          + Carrinho
+        </Button>
       </CardContent>
     </Card>
   );

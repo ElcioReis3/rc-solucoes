@@ -1,5 +1,5 @@
 "use client";
-import { Folder, MessageCircle, Phone } from "lucide-react";
+import { Folder } from "lucide-react";
 import Image from "next/image";
 import { WhatsappIcon } from "../WhatsappIcon";
 import { InstagramIcon } from "../InstagramIcon";

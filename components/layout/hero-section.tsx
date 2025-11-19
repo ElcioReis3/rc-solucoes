@@ -1,26 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useWhats } from "@/hooks/useWhats";
 import { WhatsappIcon } from "../WhatsappIcon";
 
 export const HeroSection = () => {
-  const contacts = ["5586998012172", "5586998519292"];
+  const numeroWhats = useWhats();
 
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (index == 0) {
-        setIndex(1);
-      }
-      if (index == 1) {
-        setIndex(0);
-      }
-    }, 30000);
-
-    return () => clearInterval(interval);
-  });
-
-  const numeroWhats = contacts[index];
   return (
     <>
       <section id="initial" className="bg-primary text-white py-20 md:py-32">

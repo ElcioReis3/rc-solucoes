@@ -1,12 +1,15 @@
 "use client";
+import { CartSheet } from "@/components/CartSheet";
 import { Footer } from "@/components/layout/footer";
 import { ProductCard } from "@/components/ProductCard";
+import { useCart } from "@/contexts/CartContext";
 import { ListProducts } from "@/data/product";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function Page() {
   const router = useRouter();
+  const { cart } = useCart();
 
   return (
     <>
@@ -92,6 +95,9 @@ export default function Page() {
 
         <p>Entre em contato para apresentação do catálogo.</p>
       </div>
+
+      {cart.length > 0 && <CartSheet />}
+
       <Footer />
     </>
   );

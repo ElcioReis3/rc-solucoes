@@ -1,5 +1,5 @@
 "use client";
-import { Map, Phone, ShoppingCart } from "lucide-react";
+import { Map, ShoppingCart } from "lucide-react";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import { Store, Home, School, Stethoscope, Dumbbell } from "lucide-react";

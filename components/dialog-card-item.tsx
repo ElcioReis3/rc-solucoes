@@ -10,6 +10,7 @@ import {
 import { Product } from "@/data/product";
 import Image from "next/image";
 import { Button } from "./ui/button";
+import { useCart } from "@/contexts/CartContext";
 
 type DialogCardItemProps = {
   item: Product;
@@ -17,14 +18,7 @@ type DialogCardItemProps = {
 };
 
 export const DialogCardItem = ({ item, children }: DialogCardItemProps) => {
-  const handlePhone = () => {
-    const message = `Olá! Tenho interesse no produto: ${item.title}. Por favor, envie mais informações.`;
-    const url = `https://wa.me/5586998012172?text=${encodeURIComponent(
-      message
-    )}`;
-
-    window.open(url, "_blank");
-  };
+  const { add } = useCart();
 
   return (
     <Dialog>
@@ -42,8 +36,11 @@ export const DialogCardItem = ({ item, children }: DialogCardItemProps) => {
             className="object-contain mt-4"
           />
         </div>
-        <Button className="w-full cursor-pointer" onClick={handlePhone}>
-          Tenho Interesse
+        <Button
+          className="w-full bg-blue-600 text-white py-1 mt-2 rounded hover:bg-blue-700"
+          onClick={() => add(item)}
+        >
+          + Carrinho
         </Button>
       </DialogContent>
     </Dialog>
