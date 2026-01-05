@@ -26,7 +26,7 @@ export const CompanySection = () => {
                 negócio.
               </p>
 
-              <div className="flex gap-4 mb-8">
+              <div className="flex gap-2 mb-8">
                 <a
                   href="https://wa.me/5586998143790"
                   target="_blank"
