@@ -28,6 +28,18 @@ export const CompanySection = () => {
 
               <div className="flex gap-4 mb-8">
                 <a
+                  href="https://wa.me/5586998143790"
+                  target="_blank"
+                  className="flex items-center gap-2 text-green-600 hover:text-green-700"
+                >
+                  <WhatsappIcon
+                    width={24}
+                    height={24}
+                    className="text-green-600 hover:text-green-700"
+                  />{" "}
+                  86 99814-3790
+                </a>
+                <a
                   href="https://wa.me/5586998012172"
                   target="_blank"
                   className="flex items-center gap-2 text-green-600 hover:text-green-700"

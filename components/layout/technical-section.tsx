@@ -41,7 +41,7 @@ export const TechnicalSection = () => {
                   </h4>
                   <div className="flex flex-wrap gap-4">
                     <a
-                      href="https://wa.me/5586998012172"
+                      href="https://wa.me/5586998143790"
                       target="_blank"
                       className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
                     >
@@ -50,8 +50,9 @@ export const TechnicalSection = () => {
                         height={24}
                         className="text-white"
                       />
-                      WhatsApp
+                      WhatsApp Comercial
                     </a>
+
                     <a
                       href="https://www.instagram.com/rcsolucoesdistribuidora?igsh=MWFodGdqaHcyZjZ5NA%3D%3D&utm_source=qr"
                       target="_blank"

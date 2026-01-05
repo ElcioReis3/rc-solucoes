@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 
 export function useWhats() {
-  const contacts = ["5586998012172", "5586998519292"];
-
+  const contacts = ["5586998143790"];
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
