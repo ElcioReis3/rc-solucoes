@@ -4,17 +4,22 @@ import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { HeroSection } from "@/components/layout/hero-section";
 import { InforFooter } from "@/components/layout/infor-footer";
-import { ReviewsSection } from "@/components/layout/reviews-section";
 import { TechnicalSection } from "@/components/layout/technical-section";
+import { PartnersSection } from "@/components/partners/partners-section";
+import { listActivePartners } from "@/services/partners.service";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const partners = await listActivePartners();
+
   return (
     <>
-      <Header />
+      <Header hasPartners={partners.length > 0} />
       <HeroSection />
       <CourseSection />
-      {/*  <ReviewsSection /> */}
       <CompanySection />
+      <PartnersSection partners={partners} />
       <TechnicalSection />
       <InforFooter />
       <Footer />

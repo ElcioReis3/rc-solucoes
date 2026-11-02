@@ -1,3 +1,9 @@
+/**
+ * Legacy static catalog — kept ONLY as the source data for
+ * scripts/seed-products.mjs (one-time import into Firebase). The running
+ * app no longer reads this file; see models/product.ts and
+ * services/products.service.ts for the live, Firestore-backed catalog.
+ */
 export type Product = {
   id: string;
   title: string;

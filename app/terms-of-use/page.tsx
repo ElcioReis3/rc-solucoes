@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { toast } from "sonner";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -8,17 +9,24 @@ import {
   Mail,
   Shield,
   AlertCircle,
+  CheckCircle2,
   ExternalLink,
   Copyright,
 } from "lucide-react";
 import Image from "next/image";
 
+const TERMS_ACCEPTED_KEY = "rc-solucoes-terms-accepted";
+
 export default function Page() {
   const [accepted, setAccepted] = useState(false);
+  const [alreadyAccepted, setAlreadyAccepted] = useState(
+    () => typeof window !== "undefined" && localStorage.getItem(TERMS_ACCEPTED_KEY) === "true"
+  );
 
   const handleAccept = () => {
-    alert("Termos aceitos com sucesso!");
-    console.log("Usuário aceitou os termos em:", new Date().toISOString());
+    localStorage.setItem(TERMS_ACCEPTED_KEY, "true");
+    setAlreadyAccepted(true);
+    toast.success("Termos aceitos com sucesso!");
   };
 
   return (
@@ -258,27 +266,41 @@ export default function Page() {
                 </p>
               </div>
 
-              <div className="flex items-center gap-3 mb-4">
-                <Checkbox
-                  id="accept-terms"
-                  checked={accepted}
-                  onCheckedChange={(checked) => setAccepted(checked === true)}
-                />
-                <label
-                  htmlFor="accept-terms"
-                  className="text-sm font-medium text-gray-700 cursor-pointer"
-                >
-                  Li e concordo com os Termos de Uso
-                </label>
-              </div>
+              {alreadyAccepted ? (
+                <div className="flex items-center gap-2 mb-4 p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm font-medium">
+                  <CheckCircle2 className="w-5 h-5 shrink-0" />
+                  Você já aceitou estes Termos de Uso neste navegador.
+                </div>
+              ) : (
+                <div className="flex items-center gap-3 mb-4">
+                  <Checkbox
+                    id="accept-terms"
+                    checked={accepted}
+                    onCheckedChange={(checked) => setAccepted(checked === true)}
+                  />
+                  <label
+                    htmlFor="accept-terms"
+                    className="text-sm font-medium text-gray-700 cursor-pointer"
+                  >
+                    Li e concordo com os Termos de Uso
+                  </label>
+                </div>
+              )}
 
               <div className="flex gap-3">
                 <Button
                   onClick={handleAccept}
-                  disabled={!accepted}
-                  className="flex-1 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={!accepted || alreadyAccepted}
+                  className="flex-1 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed gap-2"
                 >
-                  Aceitar Termos
+                  {alreadyAccepted ? (
+                    <>
+                      <CheckCircle2 size={18} />
+                      Termos Aceitos
+                    </>
+                  ) : (
+                    "Aceitar Termos"
+                  )}
                 </Button>
                 <Button
                   variant="outline"
