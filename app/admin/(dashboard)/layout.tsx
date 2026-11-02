@@ -13,10 +13,7 @@ export default async function AdminDashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // DIAGNÓSTICO TEMPORÁRIO: confirma que o layout é alcançado e quando termina. Pode remover depois.
-  console.log("[diag] AdminDashboardLayout: começando...");
   const admin = await getCurrentAdmin();
-  console.log("[diag] AdminDashboardLayout: getCurrentAdmin terminou, admin =", !!admin);
   if (!admin) redirect("/admin/login");
 
   return (

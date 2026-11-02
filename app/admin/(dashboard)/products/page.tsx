@@ -10,19 +10,11 @@ export const dynamic = "force-dynamic";
 export const metadata = { title: "Produtos - Painel Admin" };
 
 export default async function AdminProductsPage() {
-  // DIAGNÓSTICO TEMPORÁRIO: loga cada busca separada, pra achar qual trava. Pode remover depois.
-  const diag = async <T,>(label: string, p: Promise<T>): Promise<T> => {
-    console.log(`[diag] ${label}: começando...`);
-    const result = await p;
-    console.log(`[diag] ${label}: OK`);
-    return result;
-  };
-
   const [products, categories, subCategories, plan] = await Promise.all([
-    diag("listAllProducts", listAllProducts()),
-    diag("listCategories", listCategories()),
-    diag("listSubCategories", listSubCategories()),
-    diag("getPlanInfo", getPlanInfo()),
+    listAllProducts(),
+    listCategories(),
+    listSubCategories(),
+    getPlanInfo(),
   ]);
 
   return (
