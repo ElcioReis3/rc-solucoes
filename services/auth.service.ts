@@ -4,8 +4,9 @@ import { getAdminAuth } from "./firebase/admin";
 import { SESSION_COOKIE_NAME } from "@/lib/constants";
 
 export { SESSION_COOKIE_NAME };
-// Admin stays logged in for 12h, then must sign in again.
-const SESSION_EXPIRES_IN_MS = 12 * 60 * 60 * 1000; // 12 hours
+// Login fica salvo no navegador por 14 dias (o máximo permitido pelo Firebase Admin SDK
+// para session cookies) — depois disso precisa entrar com e-mail/senha de novo.
+const SESSION_EXPIRES_IN_MS = 14 * 24 * 60 * 60 * 1000; // 14 dias
 
 /**
  * Exchanges a freshly-signed-in Firebase ID token for a long-lived, HTTP-only
@@ -29,14 +30,10 @@ export async function getCurrentAdmin() {
   const session = cookieStore.get(SESSION_COOKIE_NAME)?.value;
   if (!session) return null;
 
-  // DIAGNÓSTICO TEMPORÁRIO: mostra se é essa chamada que nunca volta. Pode remover depois.
-  console.log("[diag] verifySessionCookie: começando...");
   try {
     const decoded = await getAdminAuth().verifySessionCookie(session, true);
-    console.log("[diag] verifySessionCookie: OK");
     return decoded;
-  } catch (err) {
-    console.log("[diag] verifySessionCookie: falhou -", err instanceof Error ? err.message : err);
+  } catch {
     return null;
   }
 }

@@ -20,7 +20,9 @@ export async function POST(request: Request) {
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
       path: "/",
-      maxAge: 60 * 60 * 12, // 12 hours, matches createSessionCookie's expiresIn
+      // 14 dias, acompanhando o expiresIn do createSessionCookie — faz o login "ficar salvo"
+      // no navegador em vez de pedir e-mail/senha de novo a cada poucas horas.
+      maxAge: 60 * 60 * 24 * 14,
     });
 
     return NextResponse.json({ success: true });
