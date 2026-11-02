@@ -9,7 +9,6 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
-.md*
 
 # testing
 /coverage
@@ -33,6 +32,9 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+*.md
+.md
+.md*
 
 # vercel
 .vercel
@@ -40,3 +42,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# chave do Firebase Admin SDK — nunca pode ir pro git
+serviceAccountKey.json*
