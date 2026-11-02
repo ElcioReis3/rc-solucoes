@@ -19,6 +19,13 @@ const nextConfig: NextConfig = {
     // novo em vez de reaproveitar uma cópia em cache no navegador — importante pro catálogo
     // sempre refletir produtos excluídos/desativados pelo admin.
     staleTimes: { dynamic: 0 },
+    serverActions: {
+      // O padrão do Next é só 1MB por requisição de Server Action — baixo demais pra formulários
+      // que enviam foto (produto, empresa parceira). A Netlify também tem um teto próprio de ~6MB
+      // por requisição nas Functions, então não adianta subir além disso — ficamos no máximo que
+      // a hospedagem realmente aceita.
+      bodySizeLimit: "6mb",
+    },
   },
 };
 

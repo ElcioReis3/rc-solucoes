@@ -6,9 +6,9 @@ import { useRouter } from "next/navigation";
 const REFRESH_INTERVAL_MS = 60_000;
 
 /**
- * Busca os dados do catálogo de novo a cada 20s em segundo plano, sem mostrar nada na tela.
+ * Busca os dados do catálogo de novo a cada 60s em segundo plano, sem mostrar nada na tela.
  * Assim, se o admin excluir ou desativar um produto, ele some do catálogo para quem já está com
- * a página aberta em até ~20s, sem precisar recarregar a página manualmente.
+ * a página aberta em até ~60s, sem precisar recarregar a página manualmente.
  */
 export function CatalogAutoRefresh() {
   const router = useRouter();

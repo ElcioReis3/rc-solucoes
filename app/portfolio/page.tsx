@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { CartSheet } from "@/components/CartSheet";
@@ -34,7 +35,11 @@ export default async function PortfolioPage() {
             Catálogo de Produtos
           </h1>
 
-          <ProductFilters products={products} categories={categories} subCategories={subCategories} />
+          {/* ProductFilters lê ?produto= da URL (pra abrir direto um produto compartilhado), o que
+              exige essa borda de Suspense — sem ela o Next recusa o build. */}
+          <Suspense fallback={null}>
+            <ProductFilters products={products} categories={categories} subCategories={subCategories} />
+          </Suspense>
 
           <p className="text-center text-sm text-muted-foreground mt-12">
             Não encontrou o que precisa? Entre em contato para apresentação completa do catálogo.

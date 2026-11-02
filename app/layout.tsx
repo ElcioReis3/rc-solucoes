@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/contexts/CartContext";
@@ -13,6 +13,12 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "RC Soluções - Produtos e Serviços de Qualidade",
   description: "Produtos de limpeza em geral e expedientes para seu negócio.",
+  // Ícone da aba do navegador (app/icon.png) e da tela de início do iPhone (app/apple-icon.png)
+  // são detectados automaticamente pelo Next por estarem na pasta app/, sem precisar listar aqui.
+  manifest: "/manifest.json",
+  appleWebApp: {
+    title: "RC Soluções",
+  },
   openGraph: {
     title: "RC Soluções - Produtos de Limpeza.",
     description:
@@ -28,6 +34,11 @@ export const metadata: Metadata = {
       },
     ],
   },
+};
+
+// Cor da barra de endereço do navegador/do app instalado na tela de início — mesmo azul da marca.
+export const viewport: Viewport = {
+  themeColor: "#0250a3",
 };
 
 export default function RootLayout({

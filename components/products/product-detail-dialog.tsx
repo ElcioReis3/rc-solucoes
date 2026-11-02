@@ -15,21 +15,35 @@ import { useCart } from "@/contexts/CartContext";
 import { formatBRL } from "@/lib/utils";
 import type { Product } from "@/models/product";
 import { ProductCarousel } from "./product-carousel";
+import { ShareProductButton } from "./share-product-button";
 
 type Props = {
   product: Product;
   categoryLabel: string;
   subCategoryLabel: string;
-  children: React.ReactNode;
+  /** Sem trigger (ex.: abrindo direto de um link compartilhado), o diálogo fica só no modo controlado abaixo. */
+  children?: React.ReactNode;
+  /** Deixa o diálogo controlado de fora — usado para abrir direto num produto específico a partir
+   *  de um link compartilhado (?produto=...). Sem isso, o diálogo se controla sozinho pelo trigger. */
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 };
 
-export function ProductDetailDialog({ product, categoryLabel, subCategoryLabel, children }: Props) {
+export function ProductDetailDialog({
+  product,
+  categoryLabel,
+  subCategoryLabel,
+  children,
+  open,
+  onOpenChange,
+}: Props) {
   const { add } = useCart();
   const hasPromo = product.showPrice && product.promoPrice && product.price;
+  const controlledProps = open !== undefined ? { open, onOpenChange } : {};
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>{children}</DialogTrigger>
+    <Dialog {...controlledProps}>
+      {children && <DialogTrigger asChild>{children}</DialogTrigger>}
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{product.title}</DialogTitle>
@@ -72,22 +86,25 @@ export function ProductDetailDialog({ product, categoryLabel, subCategoryLabel, 
           </div>
         )}
 
-        <Button
-          className="w-full gap-2"
-          onClick={() =>
-            add({
-              id: product.id,
-              title: product.title,
-              minWholesaleQty: product.showWholesale ? product.minWholesaleQty : undefined,
-              wholesaleDiscountPercent: product.showWholesale
-                ? product.wholesaleDiscountPercent
-                : undefined,
-            })
-          }
-        >
-          <ShoppingCart size={16} />
-          Adicionar ao carrinho
-        </Button>
+        <div className="flex gap-2">
+          <Button
+            className="flex-1 gap-2"
+            onClick={() =>
+              add({
+                id: product.id,
+                title: product.title,
+                minWholesaleQty: product.showWholesale ? product.minWholesaleQty : undefined,
+                wholesaleDiscountPercent: product.showWholesale
+                  ? product.wholesaleDiscountPercent
+                  : undefined,
+              })
+            }
+          >
+            <ShoppingCart size={16} />
+            Adicionar ao carrinho
+          </Button>
+          <ShareProductButton product={product} />
+        </div>
       </DialogContent>
     </Dialog>
   );

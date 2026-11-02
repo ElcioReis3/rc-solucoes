@@ -11,6 +11,12 @@ function loadImage(src: string): Promise<HTMLImageElement> {
   });
 }
 
+// Lado maior da imagem já recortada, em pixels. Fotos de celular costumam vir com 3000–4000px de
+// lado, bem mais do que qualquer card ou banner do site precisa — sem esse limite, o recorte podia
+// gerar um arquivo enorme (às vezes maior que o original) e estourar o limite de tamanho do
+// formulário na hospedagem.
+const MAX_OUTPUT_DIMENSION = 1600;
+
 /** Crops `src` to the given pixel area and returns the result as a File (same name/mime type). */
 export async function cropImageToFile(
   src: string,
@@ -19,9 +25,14 @@ export async function cropImageToFile(
   mimeType: string
 ): Promise<File> {
   const image = await loadImage(src);
+
+  const scale = Math.min(1, MAX_OUTPUT_DIMENSION / Math.max(crop.width, crop.height));
+  const outputWidth = Math.round(crop.width * scale);
+  const outputHeight = Math.round(crop.height * scale);
+
   const canvas = document.createElement("canvas");
-  canvas.width = Math.round(crop.width);
-  canvas.height = Math.round(crop.height);
+  canvas.width = outputWidth;
+  canvas.height = outputHeight;
 
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("Não foi possível processar a imagem neste navegador.");
@@ -34,8 +45,8 @@ export async function cropImageToFile(
     crop.height,
     0,
     0,
-    canvas.width,
-    canvas.height
+    outputWidth,
+    outputHeight
   );
 
   const blob = await new Promise<Blob>((resolve, reject) => {

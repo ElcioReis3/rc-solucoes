@@ -1,12 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import type { Product } from "@/models/product";
 import type { Category, SubCategory } from "@/models/category";
 import { ProductGrid } from "./product-grid";
+import { ProductDetailDialog } from "./product-detail-dialog";
 
 type Props = {
   products: Product[];
@@ -18,6 +20,28 @@ export function ProductFilters({ products, categories, subCategories }: Props) {
   const [category, setCategory] = useState<string>("todos");
   const [subCategory, setSubCategory] = useState<string>("todas");
   const [search, setSearch] = useState("");
+
+  // Abre direto o produto quando o link chega com ?produto=<id> (ex.: de um compartilhamento) —
+  // busca na lista completa, não na filtrada, pra abrir mesmo se o filtro atual escondesse o produto.
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const sharedProductId = searchParams.get("produto");
+  const sharedProduct = useMemo(
+    () => products.find((p) => p.id === sharedProductId) ?? null,
+    [products, sharedProductId]
+  );
+  const categoryName = useMemo(() => new Map(categories.map((c) => [c.slug, c.name])), [categories]);
+  const subCategoryName = useMemo(
+    () => new Map(subCategories.map((s) => [`${s.categorySlug}::${s.slug}`, s.name])),
+    [subCategories]
+  );
+  const closeSharedProduct = () => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("produto");
+    const query = params.toString();
+    router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false });
+  };
 
   const availableSubcategories = useMemo(() => {
     const slugsInUse = new Set(
@@ -95,6 +119,21 @@ export function ProductFilters({ products, categories, subCategories }: Props) {
       </div>
 
       <ProductGrid products={filtered} categories={categories} subCategories={subCategories} />
+
+      {sharedProduct && (
+        <ProductDetailDialog
+          product={sharedProduct}
+          categoryLabel={categoryName.get(sharedProduct.category) ?? sharedProduct.category}
+          subCategoryLabel={
+            subCategoryName.get(`${sharedProduct.category}::${sharedProduct.subCategory}`) ??
+            sharedProduct.subCategory
+          }
+          open
+          onOpenChange={(isOpen) => {
+            if (!isOpen) closeSharedProduct();
+          }}
+        />
+      )}
     </div>
   );
 }
