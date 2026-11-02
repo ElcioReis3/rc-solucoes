@@ -264,6 +264,10 @@ function ProductsTableBody({
   total: number;
 }) {
   const [pending, startTransition] = useTransition();
+  // useTransition só dá um "pending" global — sem isso, a lixeira/switch de TODAS as linhas
+  // piscavam carregando quando só uma era clicada. Guarda qual produto está em ação pra só essa
+  // linha mostrar o estado de carregamento.
+  const [actingOnId, setActingOnId] = useState<string | null>(null);
 
   if (total === 0) {
     return (
@@ -318,10 +322,11 @@ function ProductsTableBody({
               <td className="p-3">
                 <Switch
                   checked={product.active}
-                  disabled={pending}
-                  onCheckedChange={(checked) =>
-                    startTransition(() => toggleProductActiveAction(product.id, checked))
-                  }
+                  disabled={pending && actingOnId === product.id}
+                  onCheckedChange={(checked) => {
+                    setActingOnId(product.id);
+                    startTransition(() => toggleProductActiveAction(product.id, checked));
+                  }}
                 />
               </td>
               <td className="p-3">
@@ -335,7 +340,11 @@ function ProductsTableBody({
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
                       <Button variant="destructive" size="icon-sm" aria-label="Excluir">
-                        {pending ? <Loader2 size={14} className="animate-spin" /> : <Trash2 size={14} />}
+                        {pending && actingOnId === product.id ? (
+                          <Loader2 size={14} className="animate-spin" />
+                        ) : (
+                          <Trash2 size={14} />
+                        )}
                       </Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
@@ -348,7 +357,10 @@ function ProductsTableBody({
                       <AlertDialogFooter>
                         <AlertDialogCancel>Cancelar</AlertDialogCancel>
                         <AlertDialogAction
-                          onClick={() => startTransition(() => deleteProductAction(product.id))}
+                          onClick={() => {
+                            setActingOnId(product.id);
+                            startTransition(() => deleteProductAction(product.id));
+                          }}
                         >
                           Excluir
                         </AlertDialogAction>
