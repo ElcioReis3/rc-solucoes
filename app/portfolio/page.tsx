@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CartSheet } from "@/components/CartSheet";
 import { Footer } from "@/components/layout/footer";
 import { ProductFilters } from "@/components/products/product-filters";
+import { CatalogAutoRefresh } from "@/components/products/catalog-auto-refresh";
 import { listActiveProducts } from "@/services/products.service";
 import { listActiveCategories, listActiveSubCategories } from "@/services/categories.service";
 
@@ -18,6 +19,7 @@ export default async function PortfolioPage() {
 
   return (
     <>
+      <CatalogAutoRefresh />
       <div className="w-full mx-auto px-4 py-10 bg-blue-50 min-h-screen">
         <div className="max-w-7xl mx-auto">
           <Link href="/" className="flex justify-center mb-4">
