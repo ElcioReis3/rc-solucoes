@@ -11,12 +11,15 @@ type Props = {
   images: ProductImage[];
   title: string;
   className?: string;
+  /** Carrega a foto com prioridade (sem lazy loading) — reservar só para os primeiros produtos
+   *  visíveis sem rolar a página, pra acelerar o carregamento inicial sem pedir tudo de uma vez. */
+  priority?: boolean;
 };
 
 /** Mostra uma única imagem quando só há uma; com 2–3, roda um carrossel automático com bolinhas.
  *  Cada foto fica sobre uma cópia dela mesma desfocada e com opacidade baixa, em vez de um fundo
  *  liso, e toda a área da foto tem os cantos arredondados. */
-export function ProductCarousel({ images, title, className }: Props) {
+export function ProductCarousel({ images, title, className, priority }: Props) {
   const [active, setActive] = useState(0);
   const apiRef = useRef<CarouselApi | null>(null);
 
@@ -41,7 +44,7 @@ export function ProductCarousel({ images, title, className }: Props) {
   if (images.length === 1) {
     return (
       <div className={cn("relative overflow-hidden rounded-xl bg-white", className)}>
-        <PhotoLayer src={images[0].url} alt={title} />
+        <PhotoLayer src={images[0].url} alt={title} priority={priority} />
       </div>
     );
   }
@@ -69,7 +72,11 @@ export function ProductCarousel({ images, title, className }: Props) {
           <CarouselContent className="h-full -ml-0">
             {images.map((img, i) => (
               <CarouselItem key={img.path} className="pl-0 h-full">
-                <PhotoLayer src={img.url} alt={`${title} - foto ${i + 1}`} />
+                <PhotoLayer
+                  src={img.url}
+                  alt={`${title} - foto ${i + 1}`}
+                  priority={priority && i === 0}
+                />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -94,7 +101,15 @@ export function ProductCarousel({ images, title, className }: Props) {
 
 /** Uma foto, renderizada duas vezes: uma cópia desfocada e com opacidade baixa, cobrindo todo o
  *  box, como fundo (preenchendo o espaço vazio que o object-contain deixaria liso) e a foto nítida por cima. */
-function PhotoLayer({ src, alt }: { src: string; alt: string }) {
+function PhotoLayer({
+  src,
+  alt,
+  priority,
+}: {
+  src: string;
+  alt: string;
+  priority?: boolean;
+}) {
   return (
     <div className="relative w-full h-full">
       <Image
@@ -104,6 +119,7 @@ function PhotoLayer({ src, alt }: { src: string; alt: string }) {
         fill
         className="object-cover scale-110 blur-2xl opacity-[45%]"
         sizes="(max-width: 768px) 50vw, 25vw"
+        priority={priority}
       />
       <Image
         src={src}
@@ -111,6 +127,7 @@ function PhotoLayer({ src, alt }: { src: string; alt: string }) {
         fill
         className="object-contain p-3"
         sizes="(max-width: 768px) 50vw, 25vw"
+        priority={priority}
       />
     </div>
   );

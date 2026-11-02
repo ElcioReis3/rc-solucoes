@@ -26,6 +26,11 @@ export function ProductGrid({ products, categories, subCategories }: Props) {
   );
   const groups = groupProducts(products, categoryName, subCategoryName);
 
+  // Só os primeiros cards (visíveis sem rolar a página) carregam a foto com prioridade — o resto
+  // continua lazy, senão pedir tudo de uma vez só deixaria o carregamento inicial mais lento.
+  const PRIORITY_COUNT = 5;
+  let renderedCount = 0;
+
   return (
     <div className="space-y-10">
       {groups.map(([key, label, items]) => (
@@ -37,17 +42,22 @@ export function ProductGrid({ products, categories, subCategories }: Props) {
             </span>
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-            {items.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                categoryLabel={categoryName.get(product.category) ?? product.category}
-                subCategoryLabel={
-                  subCategoryName.get(`${product.category}::${product.subCategory}`) ??
-                  product.subCategory
-                }
-              />
-            ))}
+            {items.map((product) => {
+              const priority = renderedCount < PRIORITY_COUNT;
+              renderedCount++;
+              return (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  categoryLabel={categoryName.get(product.category) ?? product.category}
+                  subCategoryLabel={
+                    subCategoryName.get(`${product.category}::${product.subCategory}`) ??
+                    product.subCategory
+                  }
+                  priority={priority}
+                />
+              );
+            })}
           </div>
         </section>
       ))}

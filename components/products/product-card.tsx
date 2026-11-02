@@ -13,12 +13,15 @@ type Props = {
   product: Product;
   categoryLabel: string;
   subCategoryLabel: string;
+  /** Repassado pro carrossel — só os primeiros produtos visíveis sem rolar devem usar isso. */
+  priority?: boolean;
 };
 
 export function ProductCard({
   product,
   categoryLabel,
   subCategoryLabel,
+  priority,
 }: Props) {
   const { add } = useCart();
   const hasPromo = product.showPrice && product.promoPrice && product.price;
@@ -38,6 +41,7 @@ export function ProductCard({
             images={product.images}
             title={product.title}
             className="w-full h-36 sm:h-40"
+            priority={priority}
           />
           <h3 className="text-sm font-semibold leading-snug line-clamp-2 min-h-[2.5rem] px-3 pt-2 group-hover:text-primary transition-colors">
             {product.title}
