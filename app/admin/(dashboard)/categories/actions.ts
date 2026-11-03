@@ -12,23 +12,33 @@ import {
 } from "@/services/categories.service";
 import { categoryFormSchema, subCategoryFormSchema } from "@/lib/validation";
 
-function parseCategoryForm(formData: FormData) {
+/**
+ * Devolve { error } em vez de lançar throw quando a validação falha — o Next apaga a mensagem de
+ * qualquer erro lançado (throw) dentro de uma Server Action em produção, deixando só um
+ * "An error occurred..." genérico na tela. Devolvendo o erro como valor normal, a mensagem certa
+ * chega até o admin.
+ */
+export type ActionResult = { error: string } | undefined;
+
+function parseCategoryForm(formData: FormData): { data: { name: string; active: boolean } } | { error: string } {
   const parsed = categoryFormSchema.safeParse({
     name: formData.get("name"),
     active: formData.get("active") === "on",
   });
-  if (!parsed.success) throw new Error(parsed.error.issues[0]?.message ?? "Dados inválidos.");
-  return parsed.data;
+  if (!parsed.success) return { error: parsed.error.issues[0]?.message ?? "Dados inválidos." };
+  return { data: parsed.data };
 }
 
-function parseSubCategoryForm(formData: FormData) {
+function parseSubCategoryForm(
+  formData: FormData
+): { data: { name: string; categorySlug: string; active: boolean } } | { error: string } {
   const parsed = subCategoryFormSchema.safeParse({
     name: formData.get("name"),
     categorySlug: formData.get("categorySlug"),
     active: formData.get("active") === "on",
   });
-  if (!parsed.success) throw new Error(parsed.error.issues[0]?.message ?? "Dados inválidos.");
-  return parsed.data;
+  if (!parsed.success) return { error: parsed.error.issues[0]?.message ?? "Dados inválidos." };
+  return { data: parsed.data };
 }
 
 function revalidateCatalog() {
@@ -38,15 +48,19 @@ function revalidateCatalog() {
   revalidatePath("/");
 }
 
-export async function createCategoryAction(formData: FormData) {
+export async function createCategoryAction(formData: FormData): Promise<ActionResult> {
   await requireAdmin();
-  await createCategory(parseCategoryForm(formData));
+  const parsed = parseCategoryForm(formData);
+  if ("error" in parsed) return { error: parsed.error };
+  await createCategory(parsed.data);
   revalidateCatalog();
 }
 
-export async function updateCategoryAction(id: string, formData: FormData) {
+export async function updateCategoryAction(id: string, formData: FormData): Promise<ActionResult> {
   await requireAdmin();
-  await updateCategory(id, parseCategoryForm(formData));
+  const parsed = parseCategoryForm(formData);
+  if ("error" in parsed) return { error: parsed.error };
+  await updateCategory(id, parsed.data);
   revalidateCatalog();
 }
 
@@ -56,15 +70,19 @@ export async function deleteCategoryAction(id: string) {
   revalidateCatalog();
 }
 
-export async function createSubCategoryAction(formData: FormData) {
+export async function createSubCategoryAction(formData: FormData): Promise<ActionResult> {
   await requireAdmin();
-  await createSubCategory(parseSubCategoryForm(formData));
+  const parsed = parseSubCategoryForm(formData);
+  if ("error" in parsed) return { error: parsed.error };
+  await createSubCategory(parsed.data);
   revalidateCatalog();
 }
 
-export async function updateSubCategoryAction(id: string, formData: FormData) {
+export async function updateSubCategoryAction(id: string, formData: FormData): Promise<ActionResult> {
   await requireAdmin();
-  await updateSubCategory(id, parseSubCategoryForm(formData));
+  const parsed = parseSubCategoryForm(formData);
+  if ("error" in parsed) return { error: parsed.error };
+  await updateSubCategory(id, parsed.data);
   revalidateCatalog();
 }
 

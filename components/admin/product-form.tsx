@@ -20,7 +20,9 @@ type Props = {
   product?: Product;
   categories: Category[];
   subCategories: SubCategory[];
-  action: (formData: FormData) => Promise<void>;
+  // A action devolve { error } em vez de lançar throw quando a validação falha — ver o comentário
+  // em app/admin/(dashboard)/products/actions.ts sobre por que o Next apaga mensagens de throw.
+  action: (formData: FormData) => Promise<{ error: string } | void>;
 };
 
 /** True when the thrown value is Next.js's internal redirect control-flow signal. */
@@ -57,11 +59,15 @@ export function ProductForm({ product, categories, subCategories, action }: Prop
 
     startTransition(async () => {
       try {
-        await action(formData);
-        // Only reached when creating a product doesn't apply (that path always redirects and
-        // throws NEXT_REDIRECT below) — i.e. this is a successful edit-mode save that
-        // deliberately stays on this same screen. Refresh server data in place so the newly
-        // uploaded photos (with working reorder/remove) show up immediately, no page swap.
+        const result = await action(formData);
+        if (result?.error) {
+          setError(result.error);
+          return;
+        }
+        // Só chega aqui quando criar produto não se aplica (esse caminho sempre redireciona e
+        // lança NEXT_REDIRECT, pego abaixo) — ou seja, isso é um salvamento de edição bem-sucedido
+        // que deliberadamente fica nessa mesma tela. Atualiza os dados do servidor no lugar pra as
+        // fotos recém-enviadas (com reordenar/remover funcionando) aparecerem na hora, sem trocar de página.
         if (product) {
           toast.success("Alterações salvas.");
           setImagesInputKey((k) => k + 1);

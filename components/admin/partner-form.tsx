@@ -13,7 +13,9 @@ import type { PartnerCompany } from "@/models/partner";
 
 type Props = {
   partner?: PartnerCompany;
-  action: (formData: FormData) => Promise<void>;
+  // A action devolve { error } em vez de lançar throw quando a validação falha — ver o comentário
+  // em app/admin/(dashboard)/partners/actions.ts sobre por que o Next apaga mensagens de throw.
+  action: (formData: FormData) => Promise<{ error: string } | void>;
 };
 
 function isRedirectError(err: unknown): boolean {
@@ -37,7 +39,8 @@ export function PartnerForm({ partner, action }: Props) {
 
     startTransition(async () => {
       try {
-        await action(formData);
+        const result = await action(formData);
+        if (result?.error) setError(result.error);
       } catch (err) {
         if (isRedirectError(err)) throw err;
         setError(err instanceof Error ? err.message : "Erro ao salvar empresa.");

@@ -32,9 +32,15 @@ type Props = {
   subCategories: SubCategory[];
 };
 
-function runAction(fn: () => Promise<void>, successMsg?: string) {
+// As actions devolvem { error } em vez de lançar throw quando a validação falha (ver o comentário
+// em app/admin/(dashboard)/categories/actions.ts) — por isso o sucesso/erro é lido do retorno, e o
+// catch fica só como rede de segurança pra uma falha inesperada (ex.: queda de conexão).
+function runAction(fn: () => Promise<{ error: string } | void>, successMsg?: string) {
   fn()
-    .then(() => successMsg && toast.success(successMsg))
+    .then((result) => {
+      if (result?.error) toast.error(result.error);
+      else if (successMsg) toast.success(successMsg);
+    })
     .catch((err) => toast.error(err instanceof Error ? err.message : "Algo deu errado."));
 }
 

@@ -10,8 +10,17 @@ import {
   setPartnerActive,
 } from "@/services/partners.service";
 import { partnerFormSchema } from "@/lib/validation";
+import type { PartnerFormInput } from "@/models/partner";
 
-function parsePartnerForm(formData: FormData) {
+/**
+ * Devolve { error } em vez de lançar throw quando a validação falha — o Next apaga a mensagem de
+ * qualquer erro lançado (throw) dentro de uma Server Action em produção, deixando só um
+ * "An error occurred..." genérico pro admin. Devolvendo o erro como valor normal, a mensagem
+ * certa chega até a tela.
+ */
+export type ActionResult = { error: string } | undefined;
+
+function parsePartnerForm(formData: FormData): { data: PartnerFormInput } | { error: string } {
   const parsed = partnerFormSchema.safeParse({
     name: formData.get("name"),
     websiteUrl: formData.get("websiteUrl") || "",
@@ -19,11 +28,10 @@ function parsePartnerForm(formData: FormData) {
   });
 
   if (!parsed.success) {
-    const message = parsed.error.issues[0]?.message ?? "Dados inválidos.";
-    throw new Error(message);
+    return { error: parsed.error.issues[0]?.message ?? "Dados inválidos." };
   }
 
-  return { ...parsed.data, websiteUrl: parsed.data.websiteUrl || undefined };
+  return { data: { ...parsed.data, websiteUrl: parsed.data.websiteUrl || undefined } };
 }
 
 function getFile(formData: FormData, field: string): File | undefined {
@@ -31,29 +39,33 @@ function getFile(formData: FormData, field: string): File | undefined {
   return entry instanceof File && entry.size > 0 ? entry : undefined;
 }
 
-export async function createPartnerAction(formData: FormData) {
+export async function createPartnerAction(formData: FormData): Promise<ActionResult> {
   await requireAdmin();
-  const input = parsePartnerForm(formData);
+  const parsed = parsePartnerForm(formData);
+  if ("error" in parsed) return { error: parsed.error };
+
   const logo = getFile(formData, "logo");
   const banner = getFile(formData, "banner");
 
   if (!logo || !banner) {
-    throw new Error("Envie a logo e o banner da empresa.");
+    return { error: "Envie a logo e o banner da empresa." };
   }
 
-  await createPartner(input, logo, banner);
+  await createPartner(parsed.data, logo, banner);
   revalidatePath("/admin/partners");
   revalidatePath("/");
   redirect("/admin/partners");
 }
 
-export async function updatePartnerAction(id: string, formData: FormData) {
+export async function updatePartnerAction(id: string, formData: FormData): Promise<ActionResult> {
   await requireAdmin();
-  const input = parsePartnerForm(formData);
+  const parsed = parsePartnerForm(formData);
+  if ("error" in parsed) return { error: parsed.error };
+
   const logo = getFile(formData, "logo");
   const banner = getFile(formData, "banner");
 
-  await updatePartner(id, input, logo, banner);
+  await updatePartner(id, parsed.data, logo, banner);
   revalidatePath("/admin/partners");
   revalidatePath(`/admin/partners/${id}`);
   revalidatePath("/");
