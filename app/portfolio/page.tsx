@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { CartSheet } from "@/components/CartSheet";
@@ -9,7 +10,38 @@ import { listActiveProducts } from "@/services/products.service";
 import { listActiveCategories, listActiveSubCategories } from "@/services/categories.service";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Catálogo - RC Soluções" };
+
+type SearchParams = Promise<{ produto?: string }>;
+
+const DEFAULT_METADATA: Metadata = { title: "Catálogo - RC Soluções" };
+
+/**
+ * Quando o link vem com ?produto=<id> (de um compartilhamento), usa a foto, o título e a
+ * descrição DAQUELE produto nas meta tags — é isso que o WhatsApp, Instagram, etc. leem pra
+ * montar a prévia do link antes mesmo de alguém abrir a página. Sem isso, qualquer link
+ * compartilhado mostrava sempre a logo genérica do site, nunca a foto do produto de verdade.
+ */
+export async function generateMetadata({ searchParams }: { searchParams: SearchParams }): Promise<Metadata> {
+  const { produto } = await searchParams;
+  if (!produto) return DEFAULT_METADATA;
+
+  const products = await listActiveProducts();
+  const product = products.find((p) => p.id === produto);
+  if (!product) return DEFAULT_METADATA;
+
+  const cover = product.images[0]?.url;
+
+  return {
+    title: `${product.title} - RC Soluções`,
+    description: product.description,
+    openGraph: {
+      title: product.title,
+      description: product.description,
+      type: "website",
+      images: cover ? [{ url: cover, width: 800, height: 800, alt: product.title }] : undefined,
+    },
+  };
+}
 
 export default async function PortfolioPage() {
   const [products, categories, subCategories] = await Promise.all([

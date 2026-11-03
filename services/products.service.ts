@@ -1,4 +1,5 @@
 import "server-only";
+import { cache } from "react";
 import { getAdminFirestore } from "./firebase/admin";
 import { deleteImage, uploadImage } from "./storage.service";
 import {
@@ -38,15 +39,20 @@ function byTitle(a: Product, b: Product): number {
   return a.title.localeCompare(b.title, "pt-BR", { sensitivity: "base" });
 }
 
-/** Public read: only active products, used by the storefront. */
-export async function listActiveProducts(): Promise<Product[]> {
+/**
+ * Public read: only active products, used by the storefront. `cache()` faz essa busca no
+ * Firestore rodar só uma vez por requisição — a página do catálogo e o generateMetadata (pra
+ * montar a prévia do link quando um produto é compartilhado) chamam essa função sem duplicar a
+ * consulta.
+ */
+export const listActiveProducts = cache(async (): Promise<Product[]> => {
   const snap = await getAdminFirestore()
     .collection(COLLECTION)
     .where("active", "==", true)
     .get();
 
   return snap.docs.map((doc) => toProduct(doc.id, doc.data())).sort(byTitle);
-}
+});
 
 /** Admin read: everything, including inactive products. */
 export async function listAllProducts(): Promise<Product[]> {
