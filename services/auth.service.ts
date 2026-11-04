@@ -4,9 +4,8 @@ import { getAdminAuth } from "./firebase/admin";
 import { SESSION_COOKIE_NAME } from "@/lib/constants";
 
 export { SESSION_COOKIE_NAME };
-// Login fica salvo no navegador por 14 dias (o máximo permitido pelo Firebase Admin SDK
-// para session cookies) — depois disso precisa entrar com e-mail/senha de novo.
-const SESSION_EXPIRES_IN_MS = 14 * 24 * 60 * 60 * 1000; // 14 dias
+// Admin fica logado por 12h, depois precisa entrar com e-mail/senha de novo.
+const SESSION_EXPIRES_IN_MS = 12 * 60 * 60 * 1000; // 12 horas
 
 /**
  * Exchanges a freshly-signed-in Firebase ID token for a long-lived, HTTP-only
